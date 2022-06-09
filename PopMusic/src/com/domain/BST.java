@@ -14,7 +14,7 @@ public class BST<T extends Comparable<T>> {
 			right = null;
 		}
 	}
-
+ 
 	private Node root;
 
 	/*** CONSTRUCTORS ***/
