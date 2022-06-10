@@ -70,7 +70,7 @@ public class PopMusic implements Serializable {
 
 	@Override
 	public String toString() {
-		return "title: " + title + "\nsinger: " + artist + "\nyear: " + year + "\nlyric: " + lyric + "\n";
+		return "id: " + id + "\ntitle: " + title + "\nsinger: " + artist + "\nyear: " + year + "\nlyric: " + lyric + "\n";
 	}
 	
 	

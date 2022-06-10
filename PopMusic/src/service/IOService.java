@@ -6,9 +6,9 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
 import java.util.List;
 
+import domain.HashTable;
 import domain.PopMusic;
 
 public class IOService {
@@ -16,9 +16,9 @@ public class IOService {
 	private File song = new File("Songs.txt");
 
 	@SuppressWarnings("unchecked")
-	public List<PopMusic> initMusicList() {
+	public HashTable<PopMusic> initMusicList() {
 
-		List<PopMusic> musics = new ArrayList<PopMusic>();
+		HashTable<PopMusic> musics = null;
 
 		FileInputStream fis = null;
 		ObjectInputStream oi = null;
@@ -28,8 +28,8 @@ public class IOService {
 			oi = new ObjectInputStream(fis);
 
 			Object o = oi.readObject();
-			if (o instanceof List) {
-				musics = (List<PopMusic>) o;
+			if (o instanceof HashTable) {
+				musics = (HashTable<PopMusic>) o;
 			}
 
 		} catch (Exception e) {
@@ -46,7 +46,8 @@ public class IOService {
 
 	}
 
-	public void writeMusicsToFile(List<PopMusic> music) {
+	public void writeMusicsToFile(HashTable<PopMusic> music) {
+		
 
 		FileOutputStream fos = null;
 		ObjectOutputStream oos = null;
