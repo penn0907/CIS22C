@@ -10,9 +10,6 @@ import service.IOService;
 public class Test {
 
 	public static void main(String[] args) {
-		IOService io = new IOService();
-		HashTable<PopMusic> hash = new HashTable<PopMusic>(1);
-		
 		List<PopMusic> list = new ArrayList<PopMusic>();
 		list.add(new PopMusic("", "Single Ladies (Put a Ring on It)", "Beyoncé", 2008, "All the single ladies, all the single ladies\r\n" + 
 				"All the single ladies, all the single ladies\r\n" + 
@@ -1037,11 +1034,17 @@ public class Test {
 				"Ooh, ooh, this my shit, this my shit\r\n" + 
 				"Ooh, ooh, this my shit, this my shit"));
 		
+		
+		IOService io = new IOService();
+		
 		PopMusic[] music = new PopMusic[list.size()];
 		HashTable<PopMusic> hashList = new HashTable<PopMusic>(list.toArray(music), list.size());
-		io.writeMusicsToFile(hashList);
 		
-		System.out.println(io.initMusicList().toString());
+		
+		io.writeFile(hashList,Util.MUSIC_FILEPATH);
+		HashTable<PopMusic> musicTable = (HashTable<PopMusic>) io.readFile(Util.MUSIC_FILEPATH);
+		
+		System.out.println(musicTable.toString());
 	}
 
 }

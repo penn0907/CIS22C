@@ -1,36 +1,26 @@
 package service;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.List;
-
-import domain.HashTable;
-import domain.PopMusic;
 
 public class IOService {
 
-	private File song = new File("Songs.txt");
+	
+	public Object readFile(String filePath) {
 
-	@SuppressWarnings("unchecked")
-	public HashTable<PopMusic> initMusicList() {
-
-		HashTable<PopMusic> musics = null;
+		Object o = null;
 
 		FileInputStream fis = null;
 		ObjectInputStream oi = null;
 
 		try {
-			fis = new FileInputStream(song);
+			fis = new FileInputStream(filePath);
 			oi = new ObjectInputStream(fis);
 
-			Object o = oi.readObject();
-			if (o instanceof HashTable) {
-				musics = (HashTable<PopMusic>) o;
-			}
+			o = oi.readObject();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -42,21 +32,21 @@ public class IOService {
 			}
 		}
 
-		return musics;
+		return o;
 
 	}
-
-	public void writeMusicsToFile(HashTable<PopMusic> music) {
+	
+	public void writeFile(Object o, String filePath) {
 		
 
 		FileOutputStream fos = null;
 		ObjectOutputStream oos = null;
 
 		try {
-			fos = new FileOutputStream(song);
+			fos = new FileOutputStream(filePath);
 			oos = new ObjectOutputStream(fos);
 
-			oos.writeObject(music);
+			oos.writeObject(o);
 
 		} catch (Exception e) {
 			e.printStackTrace();
