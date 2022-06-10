@@ -1,6 +1,8 @@
-package com.domain;
+package domain;
 
-public class PopMusic {
+import java.io.Serializable;
+
+public class PopMusic implements Serializable {
 
 	private String id;
 	
