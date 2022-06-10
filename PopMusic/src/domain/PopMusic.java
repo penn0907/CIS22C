@@ -4,6 +4,11 @@ import java.io.Serializable;
 
 public class PopMusic implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8023328418224870263L;
+
 	private String id;
 	
 	private String title;
