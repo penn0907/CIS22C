@@ -1,15 +1,9 @@
-package domain;
-
-
 import java.io.Serializable;
 import java.util.ArrayList;
 
+@SuppressWarnings("serial")
 public class HashTable<T> implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -1565900587966929049L;
 	private int numElements;
 	private ArrayList<LinkedList<T>> Table;
 

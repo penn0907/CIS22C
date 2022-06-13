@@ -1,11 +1,6 @@
-package util;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import domain.HashTable;
-import domain.PopMusic;
-import service.IOService;
 
 public class Test {
 
@@ -1035,14 +1030,14 @@ public class Test {
 				"Ooh, ooh, this my shit, this my shit"));
 		
 		
-		IOService io = new IOService();
+		MenuInterface m = new MenuInterface();
 		
 		PopMusic[] music = new PopMusic[list.size()];
 		HashTable<PopMusic> hashList = new HashTable<PopMusic>(list.toArray(music), list.size());
 		
 		
-		io.writeFile(hashList,Util.MUSIC_FILEPATH);
-		HashTable<PopMusic> musicTable = (HashTable<PopMusic>) io.readFile(Util.MUSIC_FILEPATH);
+		m.writeFile(hashList,MenuInterface.MUSIC_FILEPATH);
+		HashTable<PopMusic> musicTable = (HashTable<PopMusic>) m.readFile(MenuInterface.MUSIC_FILEPATH);
 		
 		System.out.println(musicTable.toString());
 	}

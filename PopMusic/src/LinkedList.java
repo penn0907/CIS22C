@@ -1,21 +1,12 @@
-package domain;
-
-
 import java.io.Serializable;
 import java.util.NoSuchElementException;
 
+@SuppressWarnings("serial")
 public class LinkedList<T> implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1238382457232846063L;
 
 	private class Node implements Serializable  {
-		/**
-		 * 
-		 */
-		private static final long serialVersionUID = -8211596711985495395L;
+		
 		private T data;
 		private Node next;
 		private Node prev;

@@ -1,13 +1,9 @@
-package domain;
+
 
 import java.io.Serializable;
 
+@SuppressWarnings("serial")
 public class PopMusic implements Serializable {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -8023328418224870263L;
 
 	private String id;
 	

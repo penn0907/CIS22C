@@ -1,14 +1,22 @@
-package service;
-
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-public class IOService {
+public class MenuInterface {
 
+	public static final String[] MENU = { "1. xxx", "2. xxx" };
+
+	public static final String MUSIC_FILEPATH = "Songs.txt";
 	
+
+	public static void main(String[] args) {
+		System.out.println("Welcome to Pop Music!");
+	}
+	
+	
+
 	public Object readFile(String filePath) {
 
 		Object o = null;
@@ -35,9 +43,8 @@ public class IOService {
 		return o;
 
 	}
-	
+
 	public void writeFile(Object o, String filePath) {
-		
 
 		FileOutputStream fos = null;
 		ObjectOutputStream oos = null;
@@ -60,5 +67,4 @@ public class IOService {
 		}
 
 	}
-
 }

@@ -1,5 +1,3 @@
-package domain;
-
 import java.util.NoSuchElementException;
 
 public class BST<T extends Comparable<T>> {
