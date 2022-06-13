@@ -9,8 +9,6 @@ import java.util.Set;
 
 public class SearchEngine {
 	
-	public static final String[] MENU = { "1. xxx", "2. xxx" };
-
 	public static final String MUSIC_FILEPATH = "Songs.txt";
 	
 	public static void main(String[] args) {
