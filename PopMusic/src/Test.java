@@ -6,7 +6,7 @@ public class Test {
 
 	public static void main(String[] args) {
 		List<PopMusic> list = new ArrayList<PopMusic>();
-		list.add(new PopMusic("", "Single Ladies (Put a Ring on It)", "Beyoncé", 2008, "All the single ladies, all the single ladies\r\n" + 
+		list.add(new PopMusic("Single Ladies (Put a Ring on It)", "Beyoncé", 2008, "All the single ladies, all the single ladies\r\n" + 
 				"All the single ladies, all the single ladies\r\n" + 
 				"All the single ladies, all the single ladies\r\n" + 
 				"All the single ladies\r\n" + 
@@ -70,7 +70,7 @@ public class Test {
 				"Don't be mad once you see that he want it\r\n" + 
 				"If you liked it then you shoulda put a ring on it\r\n" + 
 				"Oh, oh, oh"));
-		list.add(new PopMusic("", "Umbrella", "Rihanna", 2007, "Uh huh, uh huh\r\n" + 
+		list.add(new PopMusic("Umbrella", "Rihanna", 2007, "Uh huh, uh huh\r\n" + 
 				"Yeah, Rihanna\r\n" + 
 				"Uh huh, uh huh\r\n" + 
 				"Good girl gone bad\r\n" + 
@@ -155,7 +155,7 @@ public class Test {
 				"Come into me\r\n" + 
 				"It's pouring rain\r\n" + 
 				"It's pouring rain"));
-		list.add(new PopMusic("", "Shake it Off", "Taylor Swift" + 
+		list.add(new PopMusic("Shake it Off", "Taylor Swift" + 
 				"", 2016, "I stay out too late, got nothing in my brain\r\n" + 
 						"That's what people say, that's what people say\r\n" + 
 						"I go on too many dates, but I can't make them stay\r\n" + 
@@ -182,7 +182,7 @@ public class Test {
 						"I, I, I shake it off, I shake it off\r\n" + 
 						"I, I, I, shake it off, I shake it off\r\n" + 
 						"I, I, I, shake it off, I shake it off"));
-		list.add(new PopMusic("", "Toxic", "Britney Spears" + 
+		list.add(new PopMusic("Toxic", "Britney Spears" + 
 				"", 2004, "Baby, can't you see I'm calling?\r\n" + 
 						"A guy like you should wear a warning\r\n" + 
 						"It's dangerous, I'm falling\r\n" + 
@@ -227,7 +227,7 @@ public class Test {
 						"I think I'm ready now, I think I'm ready now\r\n" + 
 						"Intoxicate me now, with your lovin' now\r\n" + 
 						"I think I'm ready now"));
-		list.add(new PopMusic("", "Rolling in the Deep", "Adele", 2011, "There's a fire starting in my heart\r\n" + 
+		list.add(new PopMusic("Rolling in the Deep", "Adele", 2011, "There's a fire starting in my heart\r\n" + 
 				"Reaching a fever pitch, it's bringing me out the dark\r\n" + 
 				"Finally I can see you crystal clear\r\n" + 
 				"Go 'head and sell me out and I'll lay your ship bare\r\n" + 
@@ -293,7 +293,7 @@ public class Test {
 				"Of your hands (never had met me)\r\n" + 
 				"But you played it, you played it, you played it\r\n" + 
 				"You played it to the beat"));
-		list.add(new PopMusic("", "Firework", "Katy Perry" + 
+		list.add(new PopMusic("Firework", "Katy Perry" + 
 				"", 2010, "Do you ever feel like a plastic bag\r\n" + 
 						"Drifting through the wind, wanting to start again?\r\n" + 
 						"Do you ever feel, feel so paper thin\r\n" + 
@@ -350,7 +350,7 @@ public class Test {
 						"Even brighter than the moon, moon, moon\r\n" + 
 						"Boom, boom, boom\r\n" + 
 						"Even brighter than the moon, moon, moon"));
-		list.add(new PopMusic("", "Rehab", "Amy Winehouse", 2006, "They tried to make me go to Rehab\r\n" + 
+		list.add(new PopMusic("Rehab", "Amy Winehouse", 2006, "They tried to make me go to Rehab\r\n" + 
 				"But I said no, no, no\r\n" + 
 				"Yes I've been black, but when I come back\r\n" + 
 				"You'll know, know, know\r\n" + 
@@ -397,7 +397,7 @@ public class Test {
 				"And if my daddy thinks I'm fine\r\n" + 
 				"They try to make me go to Rehab\r\n" + 
 				"But I won't go, go, go!"));
-		list.add(new PopMusic("", "Blinding Lights", "The Weeknd", 2019, "Yeah\r\n" + 
+		list.add(new PopMusic("Blinding Lights", "The Weeknd", 2019, "Yeah\r\n" + 
 				"I've been tryna call\r\n" + 
 				"I've been on my own for long enough\r\n" + 
 				"Maybe you can show me how to love, maybe\r\n" + 
@@ -431,7 +431,7 @@ public class Test {
 				"(Hey, hey, hey)\r\n" + 
 				"I said, ooh, I'm blinded by the lights\r\n" + 
 				"No, I can't sleep until I feel your touch"));
-		list.add(new PopMusic("", "Dancing on My Own", "Robyn", 2016, "Somebody said you got a new friend\r\n" + 
+		list.add(new PopMusic("Dancing on My Own", "Robyn", 2016, "Somebody said you got a new friend\r\n" + 
 				"Does she love you better than I can?\r\n" + 
 				"And there's a big black sky over my town\r\n" + 
 				"I know where you're at, I bet she's around\r\n" + 
@@ -469,7 +469,7 @@ public class Test {
 				"So far away, but still so near\r\n" + 
 				"The lights come on, the music dies\r\n" + 
 				"But you don't see me standing here"));
-		list.add(new PopMusic("", "Hey Ya!", "Outkast", 2003, "One, two, three, uh\r\n" + 
+		list.add(new PopMusic("Hey Ya!", "Outkast", 2003, "One, two, three, uh\r\n" + 
 				"My baby don't mess around\r\n" + 
 				"Because she loves me so\r\n" + 
 				"And this I know fo sho (uh)\r\n" + 
@@ -540,7 +540,7 @@ public class Test {
 				"Hey ya! (Uh oh) Hey ya! (Uh oh)\r\n" + 
 				"Hey ya! (Uh oh) Hey ya! (Uh oh)\r\n" + 
 				"Hey ya! (Uh oh) Hey ya! (Uh oh)"));
-		list.add(new PopMusic("", "Hips Don't Lie", "Shakira featuring Wyclef Jean" + 
+		list.add(new PopMusic("Hips Don't Lie", "Shakira featuring Wyclef Jean" + 
 				"", 2005, "Ladies up in here tonight\r\n" + 
 						"No fighting\r\n" + 
 						"We got the refugees up in here (no fighting)\r\n" + 
@@ -630,7 +630,7 @@ public class Test {
 						"Baby, like this is perfection\r\n" + 
 						"No fighting\r\n" + 
 						"No fighting"));
-		list.add(new PopMusic("", "SexyBack", "Justin Timberlake", 2006, "I'm bringing sexy back (yeah)\r\n" + 
+		list.add(new PopMusic("SexyBack", "Justin Timberlake", 2006, "I'm bringing sexy back (yeah)\r\n" + 
 				"Them other boys don't know how to act (yeah)\r\n" + 
 				"I think you're special, what's behind your back? (Yeah)\r\n" + 
 				"So turn around and I'll pick up the slack (yeah)\r\n" + 
@@ -710,7 +710,7 @@ public class Test {
 				"You ready? (Yes)\r\n" + 
 				"You ready? (Yes)\r\n" + 
 				"(Yes)"));
-		list.add(new PopMusic("", "Call Me Maybe", "Carly Rae Jepsen", 2012, "I threw a wish in the well\r\n" + 
+		list.add(new PopMusic("Call Me Maybe", "Carly Rae Jepsen", 2012, "I threw a wish in the well\r\n" + 
 				"Don't ask me, I'll never tell\r\n" + 
 				"I looked to you as it fell\r\n" + 
 				"And now you're in my way\r\n" + 
@@ -767,7 +767,7 @@ public class Test {
 				"Before you came into my life, I missed you so bad\r\n" + 
 				"And you should know that\r\n" + 
 				"So call me maybe"));
-		list.add(new PopMusic("", "Uptown Funk", "Mark Ronson and Bruno Mars", 2014, "This hit, that ice cold\r\n" + 
+		list.add(new PopMusic("Uptown Funk", "Mark Ronson and Bruno Mars", 2014, "This hit, that ice cold\r\n" + 
 				"Michelle Pfeiffer, that white gold\r\n" + 
 				"This one for them hood girls\r\n" + 
 				"Them good girls straight masterpieces\r\n" + 
@@ -867,7 +867,7 @@ public class Test {
 				"Uptown funk you up\r\n" + 
 				"Uptown funk you up (say what?)\r\n" + 
 				"Uptown funk you up"));
-		list.add(new PopMusic("", "Poker Face", "Lady Gaga", 2008, "I wanna hold 'em like they do in Texas, please (Woo)\r\n" + 
+		list.add(new PopMusic("Poker Face", "Lady Gaga", 2008, "I wanna hold 'em like they do in Texas, please (Woo)\r\n" + 
 				"Fold 'em, let 'em hit me, raise it, baby, stay with me (I love it)\r\n" + 
 				"LoveGame intuition, play the cards with spades to start\r\n" + 
 				"And after he's been hooked, I'll play the one that's on his heart\r\n" + 
@@ -956,7 +956,7 @@ public class Test {
 				"(Mum mum mum mah)\r\n" + 
 				"P-p-p-poker face, f-f-fuck her face\r\n" + 
 				"(Mum mum mum mah)"));
-		list.add(new PopMusic("", "Hollaback Girl", "Gwen Stefani", 2004, "Uh huh, this my shit\r\n" + 
+		list.add(new PopMusic("Hollaback Girl", "Gwen Stefani", 2004, "Uh huh, this my shit\r\n" + 
 				"All the girls stomp your feet like this\r\n" + 
 				"A few times I've been around that track\r\n" + 
 				"So it's not just gonna happen like that\r\n" + 
@@ -1030,14 +1030,14 @@ public class Test {
 				"Ooh, ooh, this my shit, this my shit"));
 		
 		
-		MenuInterface m = new MenuInterface();
+		SearchEngine m = new SearchEngine();
 		
 		PopMusic[] music = new PopMusic[list.size()];
 		HashTable<PopMusic> hashList = new HashTable<PopMusic>(list.toArray(music), list.size());
 		
 		
-		m.writeFile(hashList,MenuInterface.MUSIC_FILEPATH);
-		HashTable<PopMusic> musicTable = (HashTable<PopMusic>) m.readFile(MenuInterface.MUSIC_FILEPATH);
+		m.writeFile(hashList,SearchEngine.MUSIC_FILEPATH);
+		HashTable<PopMusic> musicTable = (HashTable<PopMusic>) m.readFile(SearchEngine.MUSIC_FILEPATH);
 		
 		System.out.println(musicTable.toString());
 	}

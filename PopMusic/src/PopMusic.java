@@ -5,8 +5,6 @@ import java.io.Serializable;
 @SuppressWarnings("serial")
 public class PopMusic implements Serializable {
 
-	private String id;
-	
 	private String title;
 	
 	private String artist;
@@ -20,22 +18,14 @@ public class PopMusic implements Serializable {
 		super();
 	}
 
-	public PopMusic(String id, String title, String singer, int year, String lyric) {
+	public PopMusic(String title, String singer, int year, String lyric) {
 		super();
-		this.id = id;
 		this.title = title;
 		this.artist = singer;
 		this.year = year;
 		this.lyric = lyric;
 	}
 
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	public String getTitle() {
 		return title;
@@ -71,7 +61,7 @@ public class PopMusic implements Serializable {
 
 	@Override
 	public String toString() {
-		return "id: " + id + "\ntitle: " + title + "\nsinger: " + artist + "\nyear: " + year + "\nlyric: " + lyric + "\n";
+		return "\ntitle: " + title + "\nartist: " + artist + "\nyear: " + year + "\nlyric: " + lyric + "\n";
 	}
 	
 	
