@@ -1,7 +1,6 @@
 import java.io.Serializable;
 import java.util.ArrayList;
 
-@SuppressWarnings("serial")
 public class HashTable<T> implements Serializable {
 
 	private int numElements;
@@ -149,6 +148,24 @@ public class HashTable<T> implements Serializable {
 		Table.get(bucket).addLast(t);
 		numElements++;
 	}
+	
+	/**
+	 * Inserts a new element in the Table at the end of the chain of the correct
+	 * bucket
+	 * 
+	 * @param t the element to insert
+	 * @param bucket the bucket to insert
+	 * @precondition The key t cannot be null
+	 * @throws NullPointerException when the precondition is violated
+	 */
+	public void add(T t, int bucket) throws NullPointerException {
+		if (t == null) {
+			throw new NullPointerException("add: Object cannot be null");
+		}
+		Table.get(bucket).addLast(t);
+		numElements++;
+	}
+	
 
 	/**
 	 * Removes the given element from the Table
@@ -258,4 +275,41 @@ public class HashTable<T> implements Serializable {
 		}
 		return sb.append("\n").toString();
 	}
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	
+	/**
+	 * Inserts a new element in the Table at the end of the chain of the correct
+	 * bucket
+	 * 
+	 * @param t the element to insert
+	 * @precondition The key t cannot be null
+	 * @throws NullPointerException when the precondition is violated
+	 */
+	public void addWithBucketNum(Integer bucketNum, T t) {
+		if (bucketNum == null || t == null) {
+			throw new NullPointerException("add: bucketNum & word cannot be null");
+		}
+		Table.get(bucketNum).addLast(t);
+		numElements++;
+	}
+
+	public ArrayList<LinkedList<T>> getTable() {
+		return Table;
+	}
+
+	
+	public LinkedList<T> get(int bucketNum) {
+		return Table.get(bucketNum);
+	}
+	
+	public int getTableSize() {
+		return Table.size();
+	}
+	
+	
 }

@@ -1,31 +1,36 @@
 
-
 import java.io.Serializable;
 
-@SuppressWarnings("serial")
-public class PopMusic implements Serializable {
+public class PopMusic implements Serializable, Comparable<PopMusic> {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	private String title;
-	
+
 	private String artist;
-	
+
 	private int year;
-	
+
 	private String lyric;
-	
 
 	public PopMusic() {
 		super();
 	}
 
-	public PopMusic(String title, String singer, int year, String lyric) {
+	public static void main(String[] args) {
+		System.out.println(3000 % 999);
+	}
+
+	public PopMusic(String title, String artist, int year, String lyric) {
 		super();
 		this.title = title;
-		this.artist = singer;
+		this.artist = artist;
 		this.year = year;
 		this.lyric = lyric;
 	}
-
 
 	public String getTitle() {
 		return title;
@@ -35,12 +40,12 @@ public class PopMusic implements Serializable {
 		this.title = title;
 	}
 
-	public String getSinger() {
+	public String getArtist() {
 		return artist;
 	}
 
-	public void setSinger(String singer) {
-		this.artist = singer;
+	public void setArtist(String artist) {
+		this.artist = artist;
 	}
 
 	public int getYear() {
@@ -59,11 +64,40 @@ public class PopMusic implements Serializable {
 		this.lyric = lyric;
 	}
 
+	/*
+	 * public String toString() { return title + "\n" + artist + "\n" + year + "\n"
+	 * + lyric + "\n"; }
+	 */
+
+	@Override
+	public int compareTo(PopMusic o) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int hashCode() {
+		String key = title + artist;
+		int sum = 0;
+		for (int i = 0; i < key.length(); i++) {
+			sum += key.charAt(i);
+		}
+		return sum;
+	}
+
+	public static int bigHashCode(String str, int size) {
+		int code = str.hashCode() & Integer.MAX_VALUE;
+		return code % size;
+	}
+
 	@Override
 	public String toString() {
-		return "\ntitle: " + title + "\nartist: " + artist + "\nyear: " + year + "\nlyric: " + lyric + "\n";
+		return "title: " + title + "\nartist: " + artist + "\nyear: " + year + "\nlyric: " + lyric
+				+ "\n";
 	}
 	
-	
+	public String toStringIntro() {
+		return "\ntitle: " + title + "\nartist: " + artist + "\nyear: " + year;
+	}
 
 }
