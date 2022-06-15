@@ -20,6 +20,8 @@ public class SearchEngine {
 			"gonna", "gotta", "that", "than", "do", "bo", "too", "as", "does", "whoa", "title:", "artist:", "year:",
 			"lyric:", "ID:", "" };
 
+	public static final int HASHTABLE_SIZE_MUTIPLE = 3;
+
 	private List<BST<PopMusic>> invertedIndex;
 
 	private HashTable<WordID> wordIds;
@@ -33,13 +35,49 @@ public class SearchEngine {
 
 	}
 
-	public PopMusic searchByWord(String word) {
-		int wordId = PopMusic.bigHashCode(word.toLowerCase(), wordIds.getTableSize());
-		BST<PopMusic> musics = invertedIndex.get(wordId);
-		if(musics.getSize() <= 0) {
+	public BST<PopMusic> searchByWord(String word) {
+		WordID wordId = new WordID(word);
+		int bucket = wordId.hashCode() % wordIds.getTableSize();
+		LinkedList<WordID> ids = wordIds.get(bucket);
+		
+		if(ids.getLength() <= 0) {	// cannot find the word
+			return null;
+		} else if (ids.getLength() == 1) {	//no collision
+			
+			return getMuscisByWordId(ids.getFirst().getID());
+			
+		} else {						//has collision
+			//check collision, get the word id from
+			int id = getWordId(ids, word);
+			if(id < 0) {
+				return null;
+			}
+			
+			return getMuscisByWordId(id);
+			
+		}
+		
+	}
+	
+	private BST<PopMusic> getMuscisByWordId(int bucket){
+		BST<PopMusic> musics = invertedIndex.get(bucket);
+		if (musics.getSize() <= 0) {
 			return null;
 		}
-		return musics.getRoot();
+		return musics;
+	}
+	
+	private int getWordId(LinkedList<WordID> ids, String word) {
+		ids.positionIterator();
+		while (!ids.offEnd()) {
+			WordID id = ids.getIterator();
+			if(id.getWord().equals(word)) {
+				return id.getID();
+			}
+			ids.advanceIterator();
+		}
+		
+		return -1;
 	}
 
 	/**
@@ -55,7 +93,7 @@ public class SearchEngine {
 	public static void main(String[] args) {
 
 		SearchEngine s = new SearchEngine();
-		System.out.println(s.searchByKey(1292).toString());
+		//System.out.println(s.searchByWord("arms").inOrderString());
 
 	}
 
@@ -77,11 +115,7 @@ public class SearchEngine {
 		String[] wordsArr = musicStr.split(" |\\,|\\.|\\!|\\r?\\n|\\r|\\(|\\)|\"|\'|\\?|\\-");
 
 		words.addAll(Arrays.asList(wordsArr));
-		/*
-		 * words.remove("title:"); words.remove("artist:"); words.remove("year:");
-		 * words.remove("lyric:");
-		 */
-		int wordIdSize = words.size() * 300;
+		int wordIdSize = words.size() * HASHTABLE_SIZE_MUTIPLE;
 		wordIds = new HashTable<WordID>(wordIdSize);
 		invertedIndex = new ArrayList<BST<PopMusic>>(wordIdSize);
 
@@ -89,41 +123,40 @@ public class SearchEngine {
 			invertedIndex.add(new BST<PopMusic>());
 		}
 
+		int idCount = 0;
 		for (String word : words) {
 			if (!isContain(STOP_WORDS, word)) {
-				int wordHash = PopMusic.bigHashCode(word.toLowerCase(), wordIdSize);
-				WordID wId = new WordID(word, wordHash);
-				wordIds.addWithBucketNum(wordHash, wId);
+				// int wordHash = bigHashCode(word.toLowerCase(), wordIdSize);
+				idCount++;
+				
+				WordID wId = new WordID(word, idCount);
+				wordIds.add(wId);
 
-				ArrayList<LinkedList<PopMusic>> table = musicTable.getTable();
+				ArrayList<PopMusic> musicsT = musicTable.getElementContains(word);
 
-				for (int i = 0; i < table.size(); i++) {
-					LinkedList<PopMusic> mList = table.get(i);
-					mList.positionIterator();
-					while (!mList.offEnd()) {
-						PopMusic p = mList.getIterator();
+				if (musicsT.size() <= 0) {
+					break;
+				}
 
-						String str = p.getTitle() + " " + p.getArtist() + " " + p.getLyric() + " " + p.getYear();
-						if (str.toLowerCase().contains(word.toLowerCase())) {
-							invertedIndex.get(wordHash).insert(p);
-						}
-						mList.advanceIterator();
-					}
-
+				for (PopMusic music : musicsT) {
+					invertedIndex.get(wId.getID()).insert(music);
 				}
 
 			}
 
 		}
 
-		/*
-		 * System.out.println(wordIds.toString());
-		 * 
-		 * for (int i = 0; i < invertedIndex.size(); i++) { BST<PopMusic> a =
-		 * invertedIndex.get(i); if (a != null) { String str = a.inOrderString(); if
-		 * (str != null || !str.equals("") || str.equals("\\n")) { //
-		 * System.out.println(i + ": " + str); } } }
-		 */
+		//System.out.println(wordIds.toString());
+
+		for (int i = 0; i < invertedIndex.size(); i++) {
+			BST<PopMusic> a = invertedIndex.get(i);
+			if (a != null) {
+				String str = a.inOrderString();
+				if (str != null || !str.equals("") || str.equals("\\n")) { //
+					//System.out.println(i + ": " + str);
+				}
+			}
+		}
 
 	}
 
@@ -202,6 +235,18 @@ public class SearchEngine {
 			}
 		}
 	}
+	
+	public PopMusic searSongByPrimaryKey(String title, String artist) {
+		PopMusic p = new PopMusic(title, artist, 0, "");
+		int bucket = p.hashCode() % musicTable.getTableSize();
+		LinkedList<PopMusic> list = musicTable.get(bucket);
+		
+		if (list.getLength() == 1) {
+			return list.getFirst();
+		} 
+		
+		return null;
+	}
 
 	public boolean deletePopMusic(String title, String artist) {
 
@@ -230,6 +275,11 @@ public class SearchEngine {
 		boolean flag = musicTable.delete(music);
 		refreshData();
 		return flag;
+	}
+
+	public static int bigHashCode(String str, int size) {
+		int code = str.hashCode() & Integer.MAX_VALUE;
+		return code % size;
 	}
 
 }

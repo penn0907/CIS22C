@@ -85,10 +85,6 @@ public class PopMusic implements Serializable, Comparable<PopMusic> {
 		return sum;
 	}
 
-	public static int bigHashCode(String str, int size) {
-		int code = str.hashCode() & Integer.MAX_VALUE;
-		return code % size;
-	}
 
 	@Override
 	public String toString() {

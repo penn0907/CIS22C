@@ -297,6 +297,27 @@ public class HashTable<T> implements Serializable {
 		Table.get(bucketNum).addLast(t);
 		numElements++;
 	}
+	
+	public ArrayList<T> getElementContains(String str){
+		
+		ArrayList<T> result = new ArrayList<T>();
+		
+		for (int i = 0; i < Table.size(); i++) {
+			LinkedList<T> list = Table.get(i);
+			list.positionIterator();
+			while (!list.offEnd()) {
+				T o = list.getIterator();
+
+				String content = o.toString();
+				if (content.toLowerCase().contains(str.toLowerCase())) {
+					result.add(o);
+				}
+				list.advanceIterator();
+			}
+		}
+		
+		return result;
+	}
 
 	public ArrayList<LinkedList<T>> getTable() {
 		return Table;

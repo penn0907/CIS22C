@@ -59,9 +59,9 @@ public class MenuInterface {
 				String songLyrics = lyrics.toString();
 
 				PopMusic popSong = new PopMusic(songTitle, songArtist, songYear, songLyrics);
-				
-				if(searchEngine1.addPopMusic(popSong)) {
-					System.out.println("Successfully added.");
+
+				if (searchEngine1.addPopMusic(popSong)) {
+					System.err.println("Successfully added.");
 				}
 
 				break;
@@ -79,9 +79,9 @@ public class MenuInterface {
 				String artist = sc.nextLine();
 
 				if (searchEngine1.deletePopMusic(title, artist)) {
-					System.out.println("Successfully deleted.");
+					System.err.println("Successfully deleted.");
 				} else {
-					System.out.println("Can't delete the song because it's not in the list!");
+					System.err.println("Can't delete the song because it's not in the list!");
 				}
 
 				break;
@@ -97,13 +97,14 @@ public class MenuInterface {
 
 				System.out.println("Enter the song's artist: ");
 				String artist1 = sc.nextLine();
+				
+				PopMusic pop = searchEngine1.searSongByPrimaryKey(title1, artist1);
 
-				/*
-				 * if (searchEngine1.searchByKey(title1, artist1) != null) {
-				 * searchEngine1.searchByKey(title1, artist1).toString(); } else {
-				 * System.out.println("Can't search for the song because it's not in the list!"
-				 * ); }
-				 */
+				if (pop != null) {
+					System.out.print(pop.toString());
+				} else {
+					System.out.println("Can't search for the song because it's not in the list!");
+				}
 
 				break;
 
@@ -113,9 +114,9 @@ public class MenuInterface {
 				System.out.println("Enter the lyrics of the song you're searching for: ");
 				String lyrics1 = sc.nextLine();
 
-				PopMusic p = searchEngine1.searchByWord(lyrics1);
+				BST<PopMusic> p = searchEngine1.searchByWord(lyrics1);
 				if (p != null) {
-					System.out.println(p.toString());
+					System.out.println(p.inOrderString());
 				} else {
 					System.out.println("Can't search for the song because it's not in the list!");
 				}
@@ -129,6 +130,9 @@ public class MenuInterface {
 
 				System.out.println("Enter the song's title you want to modify: ");
 				String title2 = sc.nextLine();
+				System.out.println("Enter the song's artist you want to modify: ");
+				String artist2 = sc.nextLine();
+				
 
 				/*
 				 * if (searchEngine1.searchByTitle(title2) != null) {
@@ -143,10 +147,29 @@ public class MenuInterface {
 				 * System.out.println("Can't modify the song because it's not in the list!"); }
 				 */
 				break;
-			case 6: // Display stats
+			case 6: // Display statistics
+			    System.out.println("Pop music Statistics"); //title
+			    
+			    // Statistics 1
+			    System.out.println("Pop music is the most popular music genre in the world, "
+			         + "with around 64% of the 19,000 respondents from 18 countries. (STATISTA)");
+			    System.out.println(); // skip a line
+			    
+			    // Statistics 2
+			    System.out.println("Sales of digital assets through blockchain grew to a size of tens of million of U.S. dollars in early 2021."
+			         + "\nThe music world sales and overall respect and valus for NFTs, "
+			         + "this is something that will likely be the norm in the future. (STATISTA)");
+			    System.out.println(); 
+			    
+			    // Statistics 3
+			    System.out.println("The streamed music distribution in the U.S. in 2021 by genra: "
+			         + "R&B/Hip-hop 29.9%, Rock 17%, Pop 13.3%, and others (STATISTA)");
+			    System.out.println(); 
+			    
 				break;
 			case 7: // Display all songs and exit
 				System.out.println("Enter option 7");
+				
 				break;
 			default:
 				System.out.println("You must enter a number from 1 to 7. Enter a number: ");

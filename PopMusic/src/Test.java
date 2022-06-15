@@ -5,7 +5,7 @@ public class Test {
 
 	public static void main(String[] args) {
 		List<PopMusic> list = new ArrayList<PopMusic>();
-		list.add(new PopMusic("Single Ladies (Put a Ring on It)", "Beyoncé", 2008,
+		list.add(new PopMusic("Single Ladies (Put a Ring on It)", "Beyonce", 2008,
 				"All the single ladies, all the single ladies\r\n" + "All the single ladies, all the single ladies\r\n"
 						+ "All the single ladies, all the single ladies\r\n" + "All the single ladies\r\n"
 						+ "Now put your hands up\r\n" + "Up in the club, we just broke up\r\n"
