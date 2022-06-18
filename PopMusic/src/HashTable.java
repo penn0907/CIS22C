@@ -148,12 +148,12 @@ public class HashTable<T> implements Serializable {
 		Table.get(bucket).addLast(t);
 		numElements++;
 	}
-	
+
 	/**
 	 * Inserts a new element in the Table at the end of the chain of the correct
 	 * bucket
 	 * 
-	 * @param t the element to insert
+	 * @param t      the element to insert
 	 * @param bucket the bucket to insert
 	 * @precondition The key t cannot be null
 	 * @throws NullPointerException when the precondition is violated
@@ -165,7 +165,6 @@ public class HashTable<T> implements Serializable {
 		Table.get(bucket).addLast(t);
 		numElements++;
 	}
-	
 
 	/**
 	 * Removes the given element from the Table
@@ -230,7 +229,7 @@ public class HashTable<T> implements Serializable {
 		if (bucket < 0 || bucket >= Table.size()) {
 			throw new IndexOutOfBoundsException("bucketToString: index is out of range");
 		}
-		
+
 		return Table.get(bucket).toString();
 	}
 
@@ -245,17 +244,16 @@ public class HashTable<T> implements Serializable {
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < Table.size(); i++) {
 			sb.append("Bucket ").append(i).append(": ");
-			
+
 			LinkedList<T> list = Table.get(i);
-			
-			if(list.isEmpty()) {
+
+			if (list.isEmpty()) {
 				sb.append("empty\n");
 			} else {
 				sb.append(list.getFirst()).append("\n");
 			}
 		}
-		
-		
+
 		return sb.toString();
 	}
 
@@ -269,68 +267,37 @@ public class HashTable<T> implements Serializable {
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < Table.size(); i++) {
 			LinkedList<T> list = Table.get(i);
-			if(!list.isEmpty()) {
+			if (!list.isEmpty()) {
 				sb.append(list.toString());
 			}
 		}
 		return sb.append("\n").toString();
 	}
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	
+
 	/**
-	 * Inserts a new element in the Table at the end of the chain of the correct
-	 * bucket
-	 * 
-	 * @param t the element to insert
-	 * @precondition The key t cannot be null
-	 * @throws NullPointerException when the precondition is violated
+	 * Get the bucket
+	 * @param bucketNum
+	 * @return LinkedList
+	 * @precondition bucket >= 0 && bucket < Table.size()
 	 */
-	public void addWithBucketNum(Integer bucketNum, T t) {
-		if (bucketNum == null || t == null) {
-			throw new NullPointerException("add: bucketNum & word cannot be null");
-		}
-		Table.get(bucketNum).addLast(t);
-		numElements++;
-	}
-	
-	public ArrayList<T> getElementContains(String str){
-		
-		ArrayList<T> result = new ArrayList<T>();
-		
-		for (int i = 0; i < Table.size(); i++) {
-			LinkedList<T> list = Table.get(i);
-			list.positionIterator();
-			while (!list.offEnd()) {
-				T o = list.getIterator();
-
-				String content = o.toString();
-				if (content.toLowerCase().contains(str.toLowerCase())) {
-					result.add(o);
-				}
-				list.advanceIterator();
-			}
-		}
-		
-		return result;
-	}
-
-	public ArrayList<LinkedList<T>> getTable() {
-		return Table;
-	}
-
-	
 	public LinkedList<T> get(int bucketNum) {
+		if (bucketNum < 0 || bucketNum >= Table.size()) {
+			throw new IndexOutOfBoundsException("bucketToString: index is out of range");
+		}
 		return Table.get(bucketNum);
 	}
-	
+
+	/**
+	 * get table size
+	 * @return table size
+	 */
 	public int getTableSize() {
 		return Table.size();
 	}
-	
-	
+
 }

@@ -64,14 +64,30 @@ public class PopMusic implements Serializable, Comparable<PopMusic> {
 		this.lyric = lyric;
 	}
 
-	/*
-	 * public String toString() { return title + "\n" + artist + "\n" + year + "\n"
-	 * + lyric + "\n"; }
+	/**
+	 * Compares this PopMusic to another Object for equality
+	 * 
+	 * @param o another Object
+	 * @return true if o is a PopMusic and has a matching title and artist to this
+	 *         PopMusic
 	 */
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		} else if (!(o instanceof PopMusic)) {
+			return false;
+		} else {
+			PopMusic L = (PopMusic) o;
+			if (this.title.equals(L.title) && this.artist.equals(L.artist)) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	@Override
 	public int compareTo(PopMusic o) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -85,15 +101,9 @@ public class PopMusic implements Serializable, Comparable<PopMusic> {
 		return sum;
 	}
 
-
 	@Override
 	public String toString() {
-		return "title: " + title + "\nartist: " + artist + "\nyear: " + year + "\nlyric: " + lyric
-				+ "\n";
-	}
-	
-	public String toStringIntro() {
-		return "\ntitle: " + title + "\nartist: " + artist + "\nyear: " + year;
+		return "\ntitle: " + title + "\nartist: " + artist + "\nyear: " + year + "\n";
 	}
 
 }
