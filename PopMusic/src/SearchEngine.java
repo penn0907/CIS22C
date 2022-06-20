@@ -27,7 +27,7 @@ public class SearchEngine {
 	private HashTable<WordID> wordIds;
 
 	private HashTable<PopMusic> musicTable;
-	
+
 	@SuppressWarnings("unchecked")
 	public SearchEngine() {
 
@@ -41,12 +41,12 @@ public class SearchEngine {
 	 */
 	private void initialIndex() {
 		Set<String> words = new HashSet<String>();
-		//get the total music string, and transfer to array
+		// get the total music string, and transfer to array
 		String[] wordsArr = musicStrToArr();
 
-		//remove the repeat element
+		// remove the repeat element
 		words.addAll(Arrays.asList(wordsArr));
-		//set default size to each list
+		// set default size to each list
 		int wordIdSize = words.size() * HASHTABLE_SIZE_MUTIPLE;
 		wordIds = new HashTable<WordID>(wordIdSize);
 		invertedIndex = new ArrayList<BST<PopMusic>>(wordIdSize);
@@ -54,17 +54,17 @@ public class SearchEngine {
 		for (int i = 0; i < wordIdSize; i++) {
 			invertedIndex.add(new BST<PopMusic>());
 		}
-		
+
 		// word id counter
 		int idCount = 0;
-		for (String word : words) {	// insert each word to word hashtable
-			if (!isContain(STOP_WORDS, word)) {	//exclude stop words
+		for (String word : words) { // insert each word to word hashtable
+			if (!isContain(STOP_WORDS, word)) { // exclude stop words
 				idCount++;
 
 				WordID wId = new WordID(word, idCount);
 				wordIds.add(wId);
 
-				//set the inverted idex
+				// set the inverted idex
 				insertInvertedIdx(wId);
 			}
 		}
@@ -72,6 +72,7 @@ public class SearchEngine {
 
 	/**
 	 * insert new inverted index
+	 * 
 	 * @param wId
 	 */
 	private void insertInvertedIdx(WordID wId) {
@@ -102,15 +103,16 @@ public class SearchEngine {
 
 	/**
 	 * search key word
+	 * 
 	 * @param word
-	 * @return	a list of music object
+	 * @return a list of music object
 	 */
 	public BST<PopMusic> searchByWord(String word) {
-		
-		if(word == null || word == "") {
+
+		if (word == null || word == "") {
 			throw new NullPointerException();
 		}
-		
+
 		WordID wordId = new WordID(word);
 		int bucket = wordId.hashCode() % wordIds.getTableSize();
 		LinkedList<WordID> ids = wordIds.get(bucket);
@@ -136,6 +138,7 @@ public class SearchEngine {
 
 	/**
 	 * get music list by bucket from inverted index hashtable
+	 * 
 	 * @param bucket
 	 * @return list of popMusic
 	 */
@@ -149,6 +152,7 @@ public class SearchEngine {
 
 	/**
 	 * get word id in a linked list
+	 * 
 	 * @param ids
 	 * @param word
 	 * @return word id
@@ -178,9 +182,10 @@ public class SearchEngine {
 
 	/**
 	 * check if string array contains a string
-	 * @param arr	string array
-	 * @param str	the string for search
-	 * @return	true: exist; false non-exist
+	 * 
+	 * @param arr string array
+	 * @param str the string for search
+	 * @return true: exist; false non-exist
 	 */
 	private boolean isContain(String[] arr, String str) {
 
@@ -195,6 +200,7 @@ public class SearchEngine {
 
 	/**
 	 * read file from a path
+	 * 
 	 * @param filePath
 	 * @return object in file
 	 */
@@ -227,7 +233,8 @@ public class SearchEngine {
 
 	/**
 	 * write a file to a path
-	 * @param o	the object want to write
+	 * 
+	 * @param o        the object want to write
 	 * @param filePath
 	 */
 	public void writeFile(Object o, String filePath) {
@@ -264,8 +271,9 @@ public class SearchEngine {
 
 	/**
 	 * add a new pop music
+	 * 
 	 * @param popSong
-	 * @return	true or false
+	 * @return true or false
 	 */
 	public boolean addPopMusic(PopMusic popSong) {
 		musicTable.add(popSong);
@@ -282,24 +290,19 @@ public class SearchEngine {
 
 	/**
 	 * search songs by the title and artist
+	 * 
 	 * @param title
 	 * @param artist
 	 * @return a music object
 	 */
 	public PopMusic searSongByPrimaryKey(String title, String artist) {
-		PopMusic p = new PopMusic(title, artist, 0, "");
-		int bucket = p.hashCode() % musicTable.getTableSize();
-		LinkedList<PopMusic> list = musicTable.get(bucket);
+		return searchByPrimaryKey(title, artist);
 
-		if (list.getLength() == 1) {
-			return list.getFirst();
-		}
-
-		return null;
 	}
 
 	/**
 	 * split the string to a string array by specific char
+	 * 
 	 * @return
 	 */
 	private String[] musicStrToArr() {
@@ -310,7 +313,8 @@ public class SearchEngine {
 
 	/**
 	 * assemble the music string
-	 * @param type	1: all the elements include; other: only title and artist
+	 * 
+	 * @param type 1: all the elements include; other: only title and artist
 	 * @return
 	 */
 	public String musicTableToString(int type) {
@@ -341,19 +345,12 @@ public class SearchEngine {
 		return sb.toString();
 	}
 
-	/**
-	 * delete music by title and artist
-	 * @param title
-	 * @param artist
-	 * @return true or false
-	 */
-	public boolean deletePopMusic(String title, String artist) {
-
+	private PopMusic searchByPrimaryKey(String title, String artist) {
 		PopMusic p = new PopMusic(title, artist, 0, "");
 		int bucket = p.hashCode() % musicTable.getTableSize();
 		LinkedList<PopMusic> list = musicTable.get(bucket);
 		if (list.getLength() == 1) {
-			return deleteMuscis(list.getFirst());
+			return list.getFirst();
 		} else if (list.getLength() > 1) {
 
 			list.positionIterator();
@@ -361,10 +358,27 @@ public class SearchEngine {
 			while (!list.offEnd()) {
 				PopMusic music = list.getIterator();
 				if (music.equals(p)) {
-					return deleteMuscis(music);
+					return music;
 				}
 				list.advanceIterator();
 			}
+		}
+
+		return null;
+	}
+
+	/**
+	 * delete music by title and artist
+	 * 
+	 * @param title
+	 * @param artist
+	 * @return true or false
+	 */
+	public boolean deletePopMusic(String title, String artist) {
+
+		PopMusic p = searchByPrimaryKey(title, artist);
+		if (p != null) {
+			return deleteMuscis(p);
 		}
 
 		return false;
@@ -380,7 +394,8 @@ public class SearchEngine {
 
 	/**
 	 * save music hash table into txt file
-	 * @param userName	file name prefix
+	 * 
+	 * @param userName file name prefix
 	 */
 	public void saveMusicTo(String userName) {
 		writeFile(musicTable, userName + "-" + MUSIC_FILEPATH);
@@ -388,12 +403,13 @@ public class SearchEngine {
 
 	/**
 	 * modify music
-	 * @param p	old music object
+	 * 
+	 * @param p         old music object
 	 * @param newTitle
 	 * @param newArtist
 	 */
 	public void updateMusic(PopMusic p, String newTitle, String newArtist) {
-		
+
 		musicTable.delete(p);
 		p.setTitle(newTitle);
 		p.setArtist(newArtist);
