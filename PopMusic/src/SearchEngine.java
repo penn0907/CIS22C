@@ -40,7 +40,6 @@ public class SearchEngine {
 	 * initial the inverted index
 	 */
 	private void initialIndex() {
-
 		Set<String> words = new HashSet<String>();
 		//get the total music string, and transfer to array
 		String[] wordsArr = musicStrToArr();
@@ -67,11 +66,8 @@ public class SearchEngine {
 
 				//set the inverted idex
 				insertInvertedIdx(wId);
-
 			}
-
 		}
-
 	}
 
 	/**
