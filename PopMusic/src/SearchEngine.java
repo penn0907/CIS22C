@@ -11,7 +11,7 @@ import java.util.Set;
 
 public class SearchEngine {
 
-	public static final String MUSIC_FILEPATH = "Songs.txt";
+	public static final String MUSIC_FILEPATH = "src/Songs.txt";
 
 	public static final String[] STOP_WORDS = { "a", "en", "go", "he", "if", "me", "mi", "mr", "ms", "Sí", "Ya", "ah",
 			"an", "by", "em", "be", "it", "it's", "at", "on", "to", "of", "the", "and", "uh", "oh", "ohh", "yeah",
