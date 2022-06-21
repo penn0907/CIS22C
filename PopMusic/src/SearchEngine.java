@@ -11,7 +11,11 @@ import java.util.Set;
 
 public class SearchEngine {
 
-	public static final String MUSIC_FILEPATH = "src/Songs.txt";
+	public static final String FILE_FOLDER = "src/";
+
+	public static final String FILE_NAME = "Songs.txt";
+
+	public static final String MUSIC_FILEPATH = FILE_FOLDER + FILE_NAME;
 
 	public static final String[] STOP_WORDS = { "a", "en", "go", "he", "if", "me", "mi", "mr", "ms", "Sí", "Ya", "ah",
 			"an", "by", "em", "be", "it", "it's", "at", "on", "to", "of", "the", "and", "uh", "oh", "ohh", "yeah",
@@ -398,7 +402,7 @@ public class SearchEngine {
 	 * @param userName file name prefix
 	 */
 	public void saveMusicTo(String userName) {
-		writeFile(musicTable, userName + "-" + MUSIC_FILEPATH);
+		writeFile(musicTable, FILE_FOLDER + userName + "-" + FILE_NAME);
 	}
 
 	/**
